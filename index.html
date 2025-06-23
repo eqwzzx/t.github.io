@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Политика и Условия | Discord Бот</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      [data-lang="en"] { display: none; }
+    </style>
+  </head>
+  <body class="bg-gray-950 text-white font-sans min-h-screen flex flex-col">
+    <header class="bg-gray-900 p-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-cyan-400">
+        <span data-lang="ru">Условия и Политика</span>
+        <span data-lang="en">Terms & Privacy</span>
+      </h1>
+      <button onclick="toggleLang()" title="Сменить язык" class="text-white hover:text-cyan-400">
+        🌐
+      </button>
+    </header>
+
+    <main class="flex-grow max-w-4xl mx-auto px-6 py-10 space-y-16">
+      <!-- Terms -->
+      <section>
+        <h2 class="text-2xl font-bold text-cyan-400 mb-4" data-lang="ru">Условия использования</h2>
+        <h2 class="text-2xl font-bold text-cyan-400 mb-4" data-lang="en">Terms of Service</h2>
+        <p class="text-gray-300" data-lang="ru">
+          Используя нашего Discord-бота, вы соглашаетесь соблюдать все правила и условия. Мы оставляем за собой право изменять условия без предварительного уведомления.
+        </p>
+        <p class="text-gray-300" data-lang="en">
+          By using our Discord bot, you agree to comply with all terms and conditions. We reserve the right to change terms without prior notice.
+        </p>
+      </section>
+
+      <!-- Privacy -->
+      <section>
+        <h2 class="text-2xl font-bold text-cyan-400 mb-4" data-lang="ru">Политика конфиденциальности</h2>
+        <h2 class="text-2xl font-bold text-cyan-400 mb-4" data-lang="en">Privacy Policy</h2>
+        <p class="text-gray-300" data-lang="ru">
+          Мы не собираем личную информацию без вашего согласия. Все данные используются только для предоставления функциональности бота.
+        </p>
+        <p class="text-gray-300" data-lang="en">
+          We do not collect personal data without your consent. All data is used solely to provide bot functionality.
+        </p>
+      </section>
+    </main>
+
+    <footer class="bg-gray-900 text-center py-4 text-sm text-gray-500">
+      &copy; 2025 Discord Бот | <a href="index.html" class="text-cyan-400 hover:underline" data-lang="ru">На главную</a>
+      <a href="index.html" class="text-cyan-400 hover:underline" data-lang="en">Back to Home</a>
+    </footer>
+
+    <script>
+      function toggleLang() {
+        const lang = localStorage.getItem('siteLang') === 'ru' ? 'en' : 'ru';
+        localStorage.setItem('siteLang', lang);
+        updateLangDisplay(lang);
+      }
+
+      function updateLangDisplay(lang) {
+        document.querySelectorAll('[data-lang]').forEach(el => {
+          el.style.display = el.getAttribute('data-lang') === lang ? '' : 'none';
+        });
+      }
+
+      const savedLang = localStorage.getItem('siteLang') || 'ru';
+      updateLangDisplay(savedLang);
+    </script>
+  </body>
+</html>
